@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <title>QuizHub - Test Your Knowledge</title>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-left">
+            <div class="logo" onclick="scrollToTop()">QuizHub</div>
+        </div>
+        <div class="nav-center">
+            <button class="nav-btn">Play</button>
+            <button class="nav-btn">Categories</button>
+            <button class="nav-btn">Leaderboard</button>
+        </div>
+        <div class="nav-right">
+            <button class="btn-secondary">Contact Support</button>
+            <button class="btn-primary" onclick="openLogin()">Log In</button>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="gradient-bg"></div>
+        <div class="gradient-bg"></div>
+        
+        <div class="hero-content">
+            <h1>Challenge Your Mind</h1>
+            <p class="subtitle">Discover thousands of quizzes across every topic imaginable. Learn, compete, and have fun!</p>
+        </div>
+
+        <div class="search-container">
+            <input type="text" class="search-box" placeholder="Search for quiz categories...">
+            <span class="search-icon">🔍</span>
+        </div>
+
+        <div class="categories-section">
+            <h2 class="section-title">All Quiz Categories</h2>
+            <div class="categories-grid" id="categoriesGrid">
+                <!-- Science -->
+                <div class="category-card" data-keywords="science physics">
+                    <span class="category-icon">⚛</span>
+                    <h3>Physics</h3>
+                    <p>Mechanics, thermodynamics, electromagnetism, and quantum physics</p>
+                </div>
+                <div class="category-card" data-keywords="science chemistry">
+                    <span class="category-icon">🧪</span>
+                    <h3>Chemistry</h3>
+                    <p>Organic, inorganic, physical chemistry, and reactions</p>
+                </div>
+                <div class="category-card" data-keywords="science biology">
+                    <span class="category-icon">🧬</span>
+                    <h3>Biology</h3>
+                    <p>Cell biology, genetics, ecology, and human anatomy</p>
+                </div>
+
+                <!-- Mathematics -->
+                <div class="category-card" data-keywords="mathematics algebra math">
+                    <span class="category-icon">📐</span>
+                    <h3>Algebra</h3>
+                    <p>Equations, polynomials, and algebraic expressions</p>
+                </div>
+                <div class="category-card" data-keywords="mathematics geometry math">
+                    <span class="category-icon">📏</span>
+                    <h3>Geometry</h3>
+                    <p>Shapes, angles, theorems, and spatial reasoning</p>
+                </div>
+                <div class="category-card" data-keywords="mathematics calculus math">
+                    <span class="category-icon">∫</span>
+                    <h3>Calculus</h3>
+                    <p>Derivatives, integrals, limits, and applications</p>
+                </div>
+                <div class="category-card" data-keywords="mathematics probability statistics math">
+                    <span class="category-icon">🎲</span>
+                    <h3>Probability</h3>
+                    <p>Statistics, probability theory, and data analysis</p>
+                </div>
+
+                <!-- Computer Science -->
+                <div class="category-card" data-keywords="computer programming code">
+                    <span class="category-icon">💻</span>
+                    <h3>Programming</h3>
+                    <p>Python, JavaScript, Java, C++, and algorithms</p>
+                </div>
+                <div class="category-card" data-keywords="computer ai artificial intelligence machine learning">
+                    <span class="category-icon">🤖</span>
+                    <h3>Artificial Intelligence</h3>
+                    <p>Machine learning, neural networks, and AI concepts</p>
+                </div>
+                <div class="category-card" data-keywords="computer databases sql">
+                    <span class="category-icon">🗄</span>
+                    <h3>Databases</h3>
+                    <p>SQL, NoSQL, database design, and management</p>
+                </div>
+                <div class="category-card" data-keywords="computer networking network">
+                    <span class="category-icon">🌐</span>
+                    <h3>Networking</h3>
+                    <p>Protocols, security, cloud computing, and infrastructure</p>
+                </div>
+
+                <!-- General Knowledge -->
+                <div class="category-card" data-keywords="general knowledge current affairs news">
+                    <span class="category-icon">📰</span>
+                    <h3>Current Affairs</h3>
+                    <p>Latest news, politics, and world events</p>
+                </div>
+                <div class="category-card" data-keywords="general knowledge inventions discovery">
+                    <span class="category-icon">💡</span>
+                    <h3>Inventions</h3>
+                    <p>Famous inventors, discoveries, and innovations</p>
+                </div>
+                <div class="category-card" data-keywords="general knowledge geography world countries">
+                    <span class="category-icon">🌍</span>
+                    <h3>Geography</h3>
+                    <p>Countries, capitals, landmarks, and physical features</p>
+                </div>
+
+                <!-- History -->
+                <div class="category-card" data-keywords="history indian india">
+                    <span class="category-icon">🇮🇳</span>
+                    <h3>Indian History</h3>
+                    <p>Ancient India, freedom struggle, and modern history</p>
+                </div>
+                <div class="category-card" data-keywords="history world wars war">
+                    <span class="category-icon">⚔</span>
+                    <h3>World Wars</h3>
+                    <p>WWI, WWII, battles, and historical conflicts</p>
+                </div>
+                <div class="category-card" data-keywords="history ancient civilizations">
+                    <span class="category-icon">🏛</span>
+                    <h3>Ancient Civilizations</h3>
+                    <p>Egypt, Rome, Greece, and Mesopotamia</p>
+                </div>
+
+                <!-- Literature -->
+                <div class="category-card" data-keywords="literature books reading">
+                    <span class="category-icon">📚</span>
+                    <h3>Famous Books</h3>
+                    <p>Classic novels, modern literature, and bestsellers</p>
+                </div>
+                <div class="category-card" data-keywords="literature authors writers">
+                    <span class="category-icon">✍</span>
+                    <h3>Authors</h3>
+                    <p>Famous writers, poets, and their works</p>
+                </div>
+                <div class="category-card" data-keywords="literature quotes quotations">
+                    <span class="category-icon">💬</span>
+                    <h3>Famous Quotes</h3>
+                    <p>Inspirational quotes and their origins</p>
+                </div>
+
+                <!-- Economics & Business -->
+                <div class="category-card" data-keywords="economics business markets stock">
+                    <span class="category-icon">📈</span>
+                    <h3>Markets</h3>
+                    <p>Stock markets, trading, and financial markets</p>
+                </div>
+                <div class="category-card" data-keywords="economics business trade commerce">
+                    <span class="category-icon">🌐</span>
+                    <h3>Trade</h3>
+                    <p>International trade, imports, and exports</p>
+                </div>
+                <div class="category-card" data-keywords="economics business startups entrepreneurship">
+                    <span class="category-icon">🚀</span>
+                    <h3>Startups</h3>
+                    <p>Entrepreneurship, unicorns, and business models</p>
+                </div>
+                <div class="category-card" data-keywords="economics business finance banking">
+                    <span class="category-icon">💰</span>
+                    <h3>Finance</h3>
+                    <p>Banking, investments, and financial planning</p>
+                </div>
+
+                <!-- Aptitude -->
+                <div class="category-card" data-keywords="aptitude numbers math">
+                    <span class="category-icon">🔢</span>
+                    <h3>Numbers</h3>
+                    <p>Numerical ability, calculations, and problem solving</p>
+                </div>
+                <div class="category-card" data-keywords="aptitude reasoning logical">
+                    <span class="category-icon">🧩</span>
+                    <h3>Reasoning</h3>
+                    <p>Logical reasoning, patterns, and deductions</p>
+                </div>
+                <div class="category-card" data-keywords="aptitude puzzles brain teasers">
+                    <span class="category-icon">🎯</span>
+                    <h3>Puzzles</h3>
+                    <p>Brain teasers, riddles, and problem solving</p>
+                </div>
+
+                <!-- Verbal Ability -->
+                <div class="category-card" data-keywords="verbal grammar english">
+                    <span class="category-icon">📝</span>
+                    <h3>Grammar</h3>
+                    <p>English grammar rules, syntax, and usage</p>
+                </div>
+                <div class="category-card" data-keywords="verbal vocabulary words english">
+                    <span class="category-icon">📖</span>
+                    <h3>Vocabulary</h3>
+                    <p>Word meanings, synonyms, and antonyms</p>
+                </div>
+                <div class="category-card" data-keywords="verbal reading comprehension english">
+                    <span class="category-icon">👓</span>
+                    <h3>Reading Comprehension</h3>
+                    <p>Passage reading, understanding, and analysis</p>
+                </div>
+
+                <!-- Entertainment -->
+                <div class="category-card" data-keywords="entertainment movies bollywood films">
+                    <span class="category-icon">🎬</span>
+                    <h3>Bollywood</h3>
+                    <p>Hindi cinema, actors, and memorable films</p>
+                </div>
+                <div class="category-card" data-keywords="entertainment movies hollywood films">
+                    <span class="category-icon">🎥</span>
+                    <h3>Hollywood</h3>
+                    <p>International cinema, stars, and blockbusters</p>
+                </div>
+                <div class="category-card" data-keywords="entertainment tv shows series">
+                    <span class="category-icon">📺</span>
+                    <h3>TV Series</h3>
+                    <p>Popular shows, characters, and plotlines</p>
+                </div>
+
+                <!-- Music -->
+                <div class="category-card" data-keywords="music artists singers bands">
+                    <span class="category-icon">🎤</span>
+                    <h3>Artists</h3>
+                    <p>Famous musicians, singers, and bands</p>
+                </div>
+                <div class="category-card" data-keywords="music lyrics songs">
+                    <span class="category-icon">🎵</span>
+                    <h3>Lyrics</h3>
+                    <p>Song lyrics, meanings, and compositions</p>
+                </div>
+                <div class="category-card" data-keywords="music instruments musical">
+                    <span class="category-icon">🎸</span>
+                    <h3>Instruments</h3>
+                    <p>Musical instruments and their types</p>
+                </div>
+
+                <!-- Sports -->
+                <div class="category-card" data-keywords="sports cricket">
+                    <span class="category-icon">🏏</span>
+                    <h3>Cricket</h3>
+                    <p>Players, matches, records, and tournaments</p>
+                </div>
+                <div class="category-card" data-keywords="sports football soccer">
+                    <span class="category-icon">⚽</span>
+                    <h3>Football</h3>
+                    <p>Teams, leagues, World Cup, and legends</p>
+                </div>
+                <div class="category-card" data-keywords="sports olympics games">
+                    <span class="category-icon">🏅</span>
+                    <h3>Olympics</h3>
+                    <p>Olympic games, athletes, and records</p>
+                </div>
+
+                <!-- Pop Culture -->
+                <div class="category-card" data-keywords="pop culture memes internet">
+                    <span class="category-icon">😂</span>
+                    <h3>Memes</h3>
+                    <p>Internet memes, viral trends, and online culture</p>
+                </div>
+                <div class="category-card" data-keywords="pop culture trends social media">
+                    <span class="category-icon">📱</span>
+                    <h3>Trends</h3>
+                    <p>Social media trends and viral phenomena</p>
+                </div>
+                <div class="category-card" data-keywords="pop culture celebrities famous">
+                    <span class="category-icon">⭐</span>
+                    <h3>Celebrities</h3>
+                    <p>Famous personalities and entertainment news</p>
+                </div>
+
+                <!-- Analytical Thinking -->
+                <div class="category-card" data-keywords="analytical pattern recognition">
+                    <span class="category-icon">🔍</span>
+                    <h3>Pattern Recognition</h3>
+                    <p>Identify patterns, sequences, and trends</p>
+                </div>
+                <div class="category-card" data-keywords="analytical data analysis">
+                    <span class="category-icon">📊</span>
+                    <h3>Data Analysis</h3>
+                    <p>Interpret data, charts, and statistics</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login/Signup Modal -->
+    <div class="modal" id="authModal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+            
+            <div id="loginForm">
+                <h2 class="modal-title">Welcome Back</h2>
+                <p class="modal-subtitle">Log in to continue your quiz journey</p>
+                
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" placeholder="Enter your password">
+                </div>
+                
+                <button class="submit-btn">Log In</button>
+                
+                <div class="toggle-form">
+                    Don't have an account? <a onclick="switchToSignup()">Sign up</a>
+                </div>
+            </div>
+
+            <div id="signupForm" style="display: none;">
+                <h2 class="modal-title">Create Account</h2>
+                <p class="modal-subtitle">Join QuizHub and start learning</p>
+                
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" placeholder="Create a password">
+                </div>
+                
+                <button class="submit-btn">Sign Up</button>
+                
+                <div class="toggle-form">
+                    Already have an account? <a onclick="switchToLogin()">Log in</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
